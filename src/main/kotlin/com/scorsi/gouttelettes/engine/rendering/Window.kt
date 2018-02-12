@@ -38,7 +38,7 @@ class Window(width: Int, height: Int) {
         // create glfw window
         id = glfwCreateWindow(width, height, "GouttelettesEngine", NULL, NULL)
         if (id == NULL) {
-            error("Can't create the window")
+            throw Error("Can't create the window")
             glfwTerminate()
         }
         // create opengl context
