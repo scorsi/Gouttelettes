@@ -7,9 +7,9 @@ import org.lwjgl.system.MemoryUtil.NULL
 
 class Window(width: Int, height: Int) {
 
-    var width: Int = width
+    var width: Float = width.toFloat()
         private set
-    var height: Int = height
+    var height: Float = height.toFloat()
         private set
     val id: Long
 
@@ -46,8 +46,8 @@ class Window(width: Int, height: Int) {
         createCapabilities()
         // set the glfw resize callback on our window
         glfwSetFramebufferSizeCallback(id, { _, newWidth, newHeight ->
-            this.width = newWidth
-            this.height = newHeight
+            this.width = newWidth.toFloat()
+            this.height = newHeight.toFloat()
             glViewport(0, 0, newWidth, newHeight)
         })
     }
