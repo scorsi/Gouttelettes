@@ -5,14 +5,29 @@ import org.lwjgl.opengl.GL.createCapabilities
 import org.lwjgl.opengl.GL11.glViewport
 import org.lwjgl.system.MemoryUtil.NULL
 
-class Window {
+class Window(width: Int, height: Int) {
 
-    companion object {
-        const val WIDTH = 800
-        const val HEIGHT = 600
+    var width: Int = width
+        private set
+    var height: Int = height
+        private set
+    val id: Long
+
+    fun update() {
+        glfwSwapBuffers(id)
+        glfwPollEvents()
     }
 
-    private val windowId: Long
+    fun destroy() {
+        glfwDestroyWindow(id)
+        glfwTerminate()
+    }
+
+    fun close() {
+        glfwSetWindowShouldClose(id, true)
+    }
+
+    fun isClosing() = glfwWindowShouldClose(id)
 
     init {
         // initialize and configure glfw
@@ -21,19 +36,19 @@ class Window {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3)
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE)
         // create glfw window
-        windowId = glfwCreateWindow(WIDTH, HEIGHT, "GuangEngine", NULL, NULL)
-        if (windowId == NULL) {
+        id = glfwCreateWindow(width, height, "GouttelettesEngine", NULL, NULL)
+        if (id == NULL) {
             error("Can't create the window")
             glfwTerminate()
         }
         // create opengl context
-        glfwMakeContextCurrent(windowId)
+        glfwMakeContextCurrent(id)
         createCapabilities()
         // set the glfw resize callback on our window
-        glfwSetFramebufferSizeCallback(windowId, { _, newWidth, newHeight ->
+        glfwSetFramebufferSizeCallback(id, { _, newWidth, newHeight ->
+            this.width = newWidth
+            this.height = newHeight
             glViewport(0, 0, newWidth, newHeight)
         })
     }
-
-    fun getId() = windowId
 }
