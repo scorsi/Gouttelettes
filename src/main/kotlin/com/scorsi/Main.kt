@@ -3,10 +3,13 @@ package com.scorsi
 import com.scorsi.gouttelettes.engine.core.Input
 import com.scorsi.gouttelettes.engine.rendering.Shader
 import com.scorsi.gouttelettes.engine.rendering.Window
+import org.joml.Vector3f
 import org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE
+import org.lwjgl.glfw.GLFW.glfwGetTime
 import org.lwjgl.opengl.GL11.*
 import org.lwjgl.opengl.GL15.*
-import org.lwjgl.opengl.GL20.*
+import org.lwjgl.opengl.GL20.glEnableVertexAttribArray
+import org.lwjgl.opengl.GL20.glVertexAttribPointer
 import org.lwjgl.opengl.GL30.*
 import org.lwjgl.system.MemoryUtil
 
@@ -50,12 +53,14 @@ fun main(vararg arg: String) {
     shader.attachVertexShader("basic")
     shader.attachFragmentShader("basic")
     shader.link()
+    shader.addUniform("color")
 
     while (window.isClosing().not()) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f)
         glClear(GL_COLOR_BUFFER_BIT)
 
         shader.use()
+        shader.setUnifom("color", Vector3f(0.0f, (Math.sin(glfwGetTime()).toFloat() / 2f) + 0.5f, 0.0f))
         glBindVertexArray(vao)
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
         glBindVertexArray(0)
