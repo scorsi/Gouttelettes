@@ -74,7 +74,7 @@ class Shader {
         }
     }
 
-    fun setUnifom(location: String, value: Vector3f) {
+    fun setUniform(location: String, value: Vector3f) {
         MemoryStack.stackPush().use {
             glUniform3fv(uniforms[location]!!, it.mallocFloat(3).apply {
                 value.get(this)

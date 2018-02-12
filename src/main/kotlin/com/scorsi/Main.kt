@@ -6,6 +6,7 @@ import com.scorsi.gouttelettes.engine.rendering.Texture
 import com.scorsi.gouttelettes.engine.rendering.Window
 import org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE
 import org.lwjgl.opengl.GL11.*
+import org.lwjgl.opengl.GL13.*
 import org.lwjgl.opengl.GL15.*
 import org.lwjgl.opengl.GL20.*
 import org.lwjgl.opengl.GL30.*
@@ -54,8 +55,14 @@ fun main(vararg arg: String) {
     shader.attachVertexShader("basic")
     shader.attachFragmentShader("basic")
     shader.link()
+    shader.use()
+    shader.addUniform("Sampler1")
+    shader.addUniform("Sampler2")
+    shader.setUniform("Sampler1", 0)
+    shader.setUniform("Sampler2", 1)
 
     val texture = Texture("./res/textures/wall.jpg")
+    val texture2 = Texture("./res/textures/awesomeface.png")
 
     while (window.isClosing().not()) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f)
@@ -63,7 +70,10 @@ fun main(vararg arg: String) {
 
         glBindVertexArray(vao)
         shader.use()
+        glActiveTexture(GL_TEXTURE0)
         texture.bind()
+        glActiveTexture(GL_TEXTURE1)
+        texture2.bind()
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(1)
         glEnableVertexAttribArray(2)
