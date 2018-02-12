@@ -43,7 +43,6 @@ class Shader {
         glLinkProgram(id)
         if (glGetProgrami(id, GL_LINK_STATUS) != GL_TRUE)
             throw Error("Error when linking shaders: ${glGetProgramInfoLog(id, 1024)}")
-        glUseProgram(id)
         vertexId?.let { glDeleteShader(it) }
         fragId?.let { glDeleteShader(it) }
     }
