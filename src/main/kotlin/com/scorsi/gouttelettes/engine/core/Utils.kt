@@ -6,11 +6,10 @@ import java.io.InputStreamReader
 object Utils {
 
     fun loadResource(fileName: String): String =
-//            mutableListOf<String>().also { lines ->
             BufferedReader(InputStreamReader(javaClass.getResourceAsStream(fileName))).use { reader ->
-                //                    reader.forEachLine { lines.add(it) }
                 reader.readText()
             }
-//            }.joinToString("\n")
+
+    fun clamp(min: Float, value: Float, max: Float) = if (value < min) min else if (value > max) max else value
 
 }

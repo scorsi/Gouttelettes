@@ -1,5 +1,6 @@
 package com.scorsi.gouttelettes.engine.core
 
+import org.joml.Vector2f
 import org.joml.Vector3f
 import org.lwjgl.glfw.GLFW.*
 
@@ -17,15 +18,22 @@ class Input(windowId: Long) {
     var mouseInWindow = false
         private set
 
+    val wheel = Vector2f()
+
     init {
         // Set the cursor position callback
         glfwSetCursorPosCallback(windowId, { _, posX, posY ->
             mousePosition.x = posX.toFloat()
             mousePosition.y = posY.toFloat()
         })
-        /** Set the cursor enter callback */
+        // Set the cursor enter callback
         glfwSetCursorEnterCallback(windowId, { _, entered ->
             mouseInWindow = entered
+        })
+        // Set the mouse wheel callback
+        glfwSetScrollCallback(windowId, { _, xOffset, yOffset ->
+            wheel.x = xOffset.toFloat()
+            wheel.y = yOffset.toFloat()
         })
         // Set the mouse button callback
         glfwSetMouseButtonCallback(windowId, { _, button, action, _ ->
@@ -49,5 +57,10 @@ class Input(windowId: Long) {
                 }
             }
         })
+    }
+
+    fun reset() {
+        wheel.x = 0f
+        wheel.y = 0f
     }
 }
