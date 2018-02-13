@@ -5,3 +5,7 @@ jdk:
 
 before_install:
   - sudo chmod 777 ./gradlew
+
+os:
+  - linux
+  - osx
