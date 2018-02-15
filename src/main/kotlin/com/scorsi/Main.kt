@@ -59,10 +59,6 @@ fun main(vararg arg: String) {
         link()
         use()
 
-//        addUniform("sampler1")
-//        addUniform("sampler2")
-//        setUniform("sampler1", 0)
-//        setUniform("sampler2", 1)
         addUniform("model")
         addUniform("view")
         addUniform("projection")
@@ -70,7 +66,9 @@ fun main(vararg arg: String) {
         addUniform("viewPos")
 
         addUniform("material.diffuse")
+        setUniform("material.diffuse", 0)
         addUniform("material.specular")
+        setUniform("material.specular", 1)
         addUniform("material.shininess")
 
         addUniform("light.position")
@@ -92,8 +90,7 @@ fun main(vararg arg: String) {
 
 
     val diffuseTexture = Texture("./res/textures/container2.png")
-    shader.setUniform("material.diffuse", 0)
-//    val texture2 = Texture("./res/textures/awesomeface.png")
+    val specularTexture = Texture("./res/textures/container2_specular.png")
 
     val camera = Camera(Vector3f(0f, 0f, 3f))
 
@@ -117,8 +114,6 @@ fun main(vararg arg: String) {
             setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
             setUniform("viewPos", camera.position)
 
-            setUniform("material.diffuse", Vector3f(1f, 0.5f, 0.31f))
-            setUniform("material.specular", Vector3f(0.5f, 0.5f, 0.5f))
             setUniform("material.shininess", 32f)
 
             setUniform("light.position", lightPos)
@@ -129,8 +124,9 @@ fun main(vararg arg: String) {
 
         glActiveTexture(GL_TEXTURE0)
         diffuseTexture.bind()
-//        glActiveTexture(GL_TEXTURE1)
-//        texture2.bind()
+        glActiveTexture(GL_TEXTURE1)
+        specularTexture.bind()
+
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(1)
         glEnableVertexAttribArray(2)
