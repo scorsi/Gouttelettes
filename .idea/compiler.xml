@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="GouttelettesEngine_engine" target="1.9" />
+      <module name="GouttelettesEngine_main" target="1.9" />
+      <module name="GouttelettesEngine_test" target="1.9" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="HaskellBuildOptions">
+    <ghcPath>C:\Program Files\Haskell Platform\8.2.2\bin\ghc.exe</ghcPath>
+    <cabalPath>C:\Program Files\Haskell Platform\8.2.2\lib\extralibs\bin\cabal.exe</cabalPath>
+    <stackPath>C:\Users\sylva\AppData\Roaming\local\bin\stack.exe</stackPath>
+  </component>
+</project>
