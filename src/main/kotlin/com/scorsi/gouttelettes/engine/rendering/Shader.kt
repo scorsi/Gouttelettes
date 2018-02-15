@@ -17,7 +17,7 @@ class Shader {
     private val uniforms: MutableMap<String, Int> = mutableMapOf()
 
     private fun attachShader(type: Int, filename: String) {
-        fun createShader() = glCreateShader(type).also { shaderId ->
+        (fun() = glCreateShader(type).also { shaderId ->
             when (shaderId) {
                 NULL.toInt() -> throw Error("Can't load shader $filename")
                 else -> {
@@ -27,10 +27,11 @@ class Shader {
                         throw Error("Error when compiling shader code: ${glGetShaderInfoLog(shaderId, 1024)}")
                 }
             }
-        }
-        when (type) {
-            GL_VERTEX_SHADER -> vertexId = createShader()
-            GL_FRAGMENT_SHADER -> fragId = createShader()
+        }).let { createShader ->
+            when (type) {
+                GL_VERTEX_SHADER -> vertexId = createShader()
+                GL_FRAGMENT_SHADER -> fragId = createShader()
+            }
         }
     }
 
