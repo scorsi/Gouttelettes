@@ -66,4 +66,5 @@ dependencies {
     compile "org.lwjgl:lwjgl-opengl:$lwjglVersion:$lwjglNatives"
     compile "org.lwjgl:lwjgl-stb:$lwjglVersion:$lwjglNatives"
     compile "org.joml:joml:${jomlVersion}"
+    compile "com.google.code.gson:gson:2.8.2"
 }
