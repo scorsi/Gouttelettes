@@ -66,6 +66,7 @@ fun main(vararg arg: String) {
         addUniform("objectColor")
         addUniform("lightColor")
         addUniform("lightPos")
+        addUniform("viewPos")
     }
     val lightShader = Shader().apply {
         attachVertexShader("light")
@@ -106,6 +107,7 @@ fun main(vararg arg: String) {
             setUniform("objectColor", Vector3f(1f, 0.5f, 0.31f))
             setUniform("lightColor", Vector3f(1f, 1f, 1f))
             setUniform("lightPos", lightPos)
+            setUniform("viewPos", camera.position)
         }
 
 //        glActiveTexture(GL_TEXTURE0)
