@@ -32,16 +32,7 @@ fun main(vararg arg: String) {
 
             -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, -0.5f, 0.5f, -0.5f, 0.0f, 1.0f)
     val cubePositions = arrayOf(
-            Vector3f(0f, 0f, 0f),
-            Vector3f(2f, 5f, -15f),
-            Vector3f(-1.5f, -2.2f, -2.5f),
-            Vector3f(-3.8f, -2.0f, -12.3f),
-            Vector3f(2.4f, -0.4f, -3.5f),
-            Vector3f(-1.7f, 3.0f, -7.5f),
-            Vector3f(1.3f, -2.0f, -2.5f),
-            Vector3f(1.5f, 2.0f, -2.5f),
-            Vector3f(1.5f, 0.2f, -1.5f),
-            Vector3f(-1.3f, 1.0f, -1.5f)
+            Vector3f(0f, 0f, 0f)
     )
 
     val vao = glGenVertexArrays()
@@ -59,22 +50,36 @@ fun main(vararg arg: String) {
 
     glBindVertexArray(0)
 
-    val shader = Shader()
-    shader.attachVertexShader("basic")
-    shader.attachFragmentShader("basic")
-    shader.link()
-    shader.use()
-    shader.addUniform("sampler1")
-    shader.addUniform("sampler2")
-    shader.setUniform("sampler1", 0)
-    shader.setUniform("sampler2", 1)
+    val shader = Shader().apply {
+        attachVertexShader("basic")
+        attachFragmentShader("basic")
+        link()
+        use()
 
-    shader.addUniform("model")
-    shader.addUniform("view")
-    shader.addUniform("projection")
+//        addUniform("sampler1")
+//        addUniform("sampler2")
+//        setUniform("sampler1", 0)
+//        setUniform("sampler2", 1)
+        addUniform("model")
+        addUniform("view")
+        addUniform("projection")
+        addUniform("objectColor")
+        addUniform("lightColor")
+    }
+    val lightShader = Shader().apply {
+        attachVertexShader("light")
+        attachFragmentShader("light")
+        link()
+        use()
 
-    val texture = Texture("./res/textures/wall.jpg")
-    val texture2 = Texture("./res/textures/awesomeface.png")
+        addUniform("model")
+        addUniform("view")
+        addUniform("projection")
+    }
+
+
+//    val texture = Texture("./res/textures/wall.jpg")
+//    val texture2 = Texture("./res/textures/awesomeface.png")
 
     val camera = Camera(Vector3f(0f, 0f, 3f))
 
@@ -92,26 +97,34 @@ fun main(vararg arg: String) {
         glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
 
         glBindVertexArray(vao)
-        shader.use()
-//        shader.setUniform("view", Matrix4f().translate(0f, 0f, -3f))
-        shader.setUniform("view", camera.viewMatrix)
-        shader.setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
+        shader.apply {
+            use()
+            setUniform("view", camera.viewMatrix)
+            setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
+            setUniform("objectColor", Vector3f(1f, 0.5f, 0.31f))
+            setUniform("lightColor", Vector3f(1f, 1f, 1f))
+        }
 
-        glActiveTexture(GL_TEXTURE0)
-        texture.bind()
-        glActiveTexture(GL_TEXTURE1)
-        texture2.bind()
+//        glActiveTexture(GL_TEXTURE0)
+//        texture.bind()
+//        glActiveTexture(GL_TEXTURE1)
+//        texture2.bind()
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(1)
         glEnableVertexAttribArray(2)
         cubePositions.forEach { cubePosition ->
-            val model = Matrix4f()
-                    .translate(cubePosition)
-                    .rotate(glfwGetTime().toFloat(), Vector3f(1f, 0f, 0f))
-                    .rotate(glfwGetTime().toFloat(), Vector3f(0f, 1f, 0f))
-            shader.setUniform("model", model)
+            shader.setUniform("model", Matrix4f().translate(cubePosition))
             glDrawArrays(GL_TRIANGLES, 0, 36)
         }
+
+        lightShader.apply {
+            use()
+            setUniform("model", Matrix4f().translate(1.2f, 1f, 2f).scale(0.2f))
+            setUniform("view", camera.viewMatrix)
+            setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
+        }
+        glDrawArrays(GL_TRIANGLES, 0, 36)
+
         glDisableVertexAttribArray(0)
         glDisableVertexAttribArray(1)
         glDisableVertexAttribArray(2)
@@ -124,6 +137,7 @@ fun main(vararg arg: String) {
     }
     glDeleteVertexArrays(vao)
     glDeleteBuffers(vbo)
-    texture.delete()
+//    texture.delete()
+//    texture2.delete()
     window.destroy()
 }
