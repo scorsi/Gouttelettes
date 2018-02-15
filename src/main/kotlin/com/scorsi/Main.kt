@@ -63,10 +63,18 @@ fun main(vararg arg: String) {
         addUniform("model")
         addUniform("view")
         addUniform("projection")
-        addUniform("objectColor")
-        addUniform("lightColor")
-        addUniform("lightPos")
+
         addUniform("viewPos")
+
+        addUniform("material.ambient")
+        addUniform("material.diffuse")
+        addUniform("material.specular")
+        addUniform("material.shininess")
+
+        addUniform("light.position")
+        addUniform("light.ambient")
+        addUniform("light.diffuse")
+        addUniform("light.specular")
     }
     val lightShader = Shader().apply {
         attachVertexShader("light")
@@ -104,10 +112,17 @@ fun main(vararg arg: String) {
             use()
             setUniform("view", camera.viewMatrix)
             setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
-            setUniform("objectColor", Vector3f(1f, 0.5f, 0.31f))
-            setUniform("lightColor", Vector3f(1f, 1f, 1f))
-            setUniform("lightPos", lightPos)
             setUniform("viewPos", camera.position)
+
+            setUniform("material.ambient", Vector3f(1f, 0.5f, 0.31f))
+            setUniform("material.diffuse", Vector3f(1f, 0.5f, 0.31f))
+            setUniform("material.specular", Vector3f(0.5f, 0.5f, 0.5f))
+            setUniform("material.shininess", 32f)
+
+            setUniform("light.position", lightPos)
+            setUniform("light.ambient", Vector3f(0.2f, 0.2f, 0.2f))
+            setUniform("light.diffuse", Vector3f(0.5f, 0.5f, 0.5f))
+            setUniform("light.specular", Vector3f(1f, 1f, 1f))
         }
 
 //        glActiveTexture(GL_TEXTURE0)
