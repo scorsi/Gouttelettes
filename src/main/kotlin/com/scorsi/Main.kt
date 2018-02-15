@@ -20,17 +20,17 @@ fun main(vararg arg: String) {
     val window = Window(800, 600)
     val input = Input(window.id)
 
-    val vertices = floatArrayOf(-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 0.5f, 0.5f, -0.5f, 1.0f, 1.0f, -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+    val vertices = floatArrayOf(-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f,
 
-            -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 1.0f, 0.5f, 0.5f, 0.5f, 1.0f, 1.0f, -0.5f, 0.5f, 0.5f, 0.0f, 1.0f, -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
 
-            -0.5f, 0.5f, 0.5f, 1.0f, 0.0f, -0.5f, 0.5f, -0.5f, 1.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+            -0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f, -0.5f, 0.5f, -0.5f, -1.0f, 0.0f, 0.0f, -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, -0.5f, -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, -0.5f, -0.5f, 0.5f, -1.0f, 0.0f, 0.0f, -0.5f, 0.5f, 0.5f, -1.0f, 0.0f, 0.0f,
 
-            0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+            0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.5f, 0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f, 0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f,
 
-            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 0.5f, -0.5f, 0.5f, 1.0f, 0.0f, -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f, 0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, -0.5f, -0.5f, -0.5f, 0.0f, -1.0f, 0.0f,
 
-            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.5f, 0.5f, -0.5f, 1.0f, 1.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, -0.5f, 0.5f, -0.5f, 0.0f, 1.0f)
+            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, -0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f)
     val cubePositions = arrayOf(
             Vector3f(0f, 0f, 0f)
     )
@@ -45,8 +45,8 @@ fun main(vararg arg: String) {
                 glBindBuffer(GL_ARRAY_BUFFER, vbo)
                 glBufferData(GL_ARRAY_BUFFER, this, GL_STATIC_DRAW)
             })
-    glVertexAttribPointer(0, 3, GL_FLOAT, false, 5 * 4, 0)
-    glVertexAttribPointer(1, 2, GL_FLOAT, false, 5 * 4, 3 * 4)
+    glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * 4, 0)
+    glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * 4, 3 * 4)
 
     glBindVertexArray(0)
 
@@ -65,6 +65,7 @@ fun main(vararg arg: String) {
         addUniform("projection")
         addUniform("objectColor")
         addUniform("lightColor")
+        addUniform("lightPos")
     }
     val lightShader = Shader().apply {
         attachVertexShader("light")
@@ -76,6 +77,7 @@ fun main(vararg arg: String) {
         addUniform("view")
         addUniform("projection")
     }
+    val lightPos = Vector3f(1.2f, 1f, 2f)
 
 
 //    val texture = Texture("./res/textures/wall.jpg")
@@ -103,6 +105,7 @@ fun main(vararg arg: String) {
             setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
             setUniform("objectColor", Vector3f(1f, 0.5f, 0.31f))
             setUniform("lightColor", Vector3f(1f, 1f, 1f))
+            setUniform("lightPos", lightPos)
         }
 
 //        glActiveTexture(GL_TEXTURE0)
@@ -111,7 +114,6 @@ fun main(vararg arg: String) {
 //        texture2.bind()
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(1)
-        glEnableVertexAttribArray(2)
         cubePositions.forEach { cubePosition ->
             shader.setUniform("model", Matrix4f().translate(cubePosition))
             glDrawArrays(GL_TRIANGLES, 0, 36)
@@ -119,7 +121,7 @@ fun main(vararg arg: String) {
 
         lightShader.apply {
             use()
-            setUniform("model", Matrix4f().translate(1.2f, 1f, 2f).scale(0.2f))
+            setUniform("model", Matrix4f().translate(lightPos).scale(0.2f))
             setUniform("view", camera.viewMatrix)
             setUniform("projection", Matrix4f().perspective(Math.toRadians(camera.zoom.toDouble()).toFloat(), window.width / window.height, 0.1f, 100f))
         }
@@ -127,7 +129,6 @@ fun main(vararg arg: String) {
 
         glDisableVertexAttribArray(0)
         glDisableVertexAttribArray(1)
-        glDisableVertexAttribArray(2)
         glBindVertexArray(0)
 
         input.reset()
