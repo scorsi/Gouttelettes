@@ -3,6 +3,7 @@ package com.scorsi.gouttelettes.engine.rendering
 import com.scorsi.gouttelettes.engine.core.Input
 import com.scorsi.gouttelettes.engine.core.Utils.clamp
 import org.joml.Matrix4f
+import org.joml.Vector2f
 import org.joml.Vector3f
 import org.lwjgl.glfw.GLFW.*
 
@@ -60,6 +61,20 @@ class Camera constructor(
         if (zoom in 1.0f..50.0f)
             zoom -= input.wheel.y
         zoom = clamp(1.0f, zoom, 50.0f)
+
+        if (input.isKeyPressed(GLFW_KEY_ENTER)) {
+            input.mouseLocked = input.mouseLocked.not()
+            input.showCursor(input.mouseLocked)
+        }
+
+        if (input.mouseLocked) {
+            Vector2f().apply {
+                input.mousePosition.sub(input.mouseCenterPosition, this)
+                yaw += -x * mouseSensitivity
+                pitch += clamp(-89f, -y * mouseSensitivity, 89f)
+            }
+            updateVectors()
+        }
     }
 
     private fun updateVectors() {
