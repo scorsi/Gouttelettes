@@ -49,20 +49,20 @@ class Camera constructor(
 
     fun handleInput(input: Input, deltaTime: Float) {
         val velocity = movementSpeed * deltaTime
-        if (input.isKeyPressed(GLFW_KEY_W))
+        if (input.isKeyDown(GLFW_KEY_W))
             position.add(Vector3f().apply { front.mul(velocity, this) })
-        if (input.isKeyPressed(GLFW_KEY_S))
+        if (input.isKeyDown(GLFW_KEY_S))
             position.sub(Vector3f().apply { front.mul(velocity, this) })
-        if (input.isKeyPressed(GLFW_KEY_A))
+        if (input.isKeyDown(GLFW_KEY_A))
             position.add(Vector3f().apply { right.mul(velocity, this) })
-        if (input.isKeyPressed(GLFW_KEY_D))
+        if (input.isKeyDown(GLFW_KEY_D))
             position.sub(Vector3f().apply { right.mul(velocity, this) })
 
         if (zoom in 1.0f..50.0f)
             zoom -= input.wheel.y
         zoom = clamp(1.0f, zoom, 50.0f)
 
-        if (input.isKeyPressed(GLFW_KEY_ENTER)) {
+        if (input.isKeyDownOnce(GLFW_KEY_ENTER)) {
             input.mouseLocked = input.mouseLocked.not()
             input.showCursor(input.mouseLocked)
         }

@@ -150,8 +150,8 @@ fun main(vararg arg: String) {
 
         input.update()
         window.update()
-        Thread.sleep(5)
-        if (input.isKeyPressed(GLFW_KEY_ESCAPE))
+        Thread.sleep(100)
+        if (input.isKeyDown(GLFW_KEY_ESCAPE))
             window.close()
     }
     glDeleteVertexArrays(vao)

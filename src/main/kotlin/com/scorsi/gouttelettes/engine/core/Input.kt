@@ -6,11 +6,8 @@ import org.lwjgl.glfw.GLFW.*
 
 class Input(private val window: Window) {
 
-    private val pressedKeys = BooleanArray(GLFW_KEY_LAST, { false })
-    private val pressedMouses = BooleanArray(8, { false })
-
-    fun isKeyPressed(key: Int) = pressedKeys[key]
-    fun isMousePressed(button: Int) = pressedMouses[button]
+    private val keys = IntArray(GLFW_KEY_LAST, { GLFW_RELEASE })
+    private val mouses = IntArray(8, { GLFW_RELEASE })
 
     var mousePosition = Vector2f()
         private set
@@ -42,27 +39,21 @@ class Input(private val window: Window) {
         })
         // Set the mouse button callback
         glfwSetMouseButtonCallback(window.id, { _, button, action, _ ->
-            when (action) {
-                GLFW_PRESS -> {
-                    pressedMouses[button] = true
-                }
-                GLFW_RELEASE -> {
-                    pressedMouses[button] = false
-                }
-            }
+            mouses[button] = action
         })
         // Set the key callback
         glfwSetKeyCallback(window.id, { _, key, _, action, _ ->
-            when (action) {
-                GLFW_PRESS -> {
-                    pressedKeys[key] = true
-                }
-                GLFW_RELEASE -> {
-                    pressedKeys[key] = false
-                }
-            }
+            keys[key] = action
         })
     }
+
+    fun isKeyDown(key: Int) = keys[key] == GLFW_REPEAT || keys[key] == GLFW_PRESS
+    fun isKeyDownOnce(key: Int) = keys[key] == GLFW_PRESS
+    fun isKeyUp(key: Int) = keys[key] == GLFW_RELEASE
+
+    fun isMouseDown(button: Int) = mouses[button] == GLFW_REPEAT || mouses[button] == GLFW_PRESS
+    fun isMouseDownOnce(button: Int) = mouses[button] == GLFW_PRESS
+    fun isMouseUp(button: Int) = mouses[button] == GLFW_RELEASE
 
     fun centerCursor() = glfwSetCursorPos(window.id, window.width / 2.0, window.height / 2.0)
 
