@@ -5,6 +5,10 @@ This is the third time I restart my game-engine, so the project is under hard (a
 
 ## Preview
 
+One cube with a diffuse and specular texture. One source light.
+
+We can see the source light reflection on the edge of the box.
+
 ![Preview](https://github.com/scorsi/Gouttelettes/blob/master/.github/preview.png)
 
 ## Roadmap
