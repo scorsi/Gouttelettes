@@ -18,7 +18,7 @@ import org.lwjgl.system.MemoryUtil
 
 fun main(vararg arg: String) {
     val window = Window(800, 600)
-    val input = Input(window.id)
+    val input = Input(window)
 
     val vertices = floatArrayOf(
             // positions          // normals           // texture coords
@@ -148,8 +148,9 @@ fun main(vararg arg: String) {
         glDisableVertexAttribArray(2)
         glBindVertexArray(0)
 
-        input.reset()
+        input.update()
         window.update()
+        Thread.sleep(5)
         if (input.isKeyPressed(GLFW_KEY_ESCAPE))
             window.close()
     }
