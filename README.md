@@ -9,7 +9,7 @@ One cube with a diffuse and specular texture. One source light.
 
 We can see the source light reflection on the edge of the box.
 
-![Preview](https://github.com/scorsi/Gouttelettes/blob/master/.github/preview.png)
+![Preview](https://raw.githubusercontent.com/scorsi/Gouttelettes/master/.github/preview.png)
 
 ## Roadmap
 
