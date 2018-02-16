@@ -1,4 +1,7 @@
 # Gouttelettes Engine
+
+[![Travis Build Status](https://travis-ci.org/scorsi/Gouttelettes.svg?branch=master)](https://travis-ci.org/scorsi/Gouttelettes)
+
 Gouttelettes is a 3D Game Engine written in full-Kotlin with high-performances designed to create powerful graphics using OpenGL.
 
 This is the third time I restart my game-engine, so the project is under hard (and actually fast) development.
