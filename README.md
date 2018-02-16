@@ -13,6 +13,7 @@ One cube with a diffuse and specular texture. One source light.
 We can see the source light reflection on the edge of the box.
 
 ![Preview](https://raw.githubusercontent.com/scorsi/Gouttelettes/master/.github/preview.png)
+![Preview 2](https://raw.githubusercontent.com/scorsi/Gouttelettes/master/.github/preview1.png)
 
 ## Roadmap
 
@@ -26,7 +27,7 @@ Estimated for July 2018
 - [X] **First** Models
 - [X] **First** Light
 - [X] Light Map (ambient, diffuse and specular)
-- [ ] Different type light : directional and point lights
+- [X] Different type light : directional and point lights
 - [ ] **First** Multiple light sources support
 - [ ] Model loading with ASSIMP
 - [ ] Depth testing
