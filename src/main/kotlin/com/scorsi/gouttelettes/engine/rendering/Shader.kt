@@ -4,6 +4,7 @@ import com.scorsi.gouttelettes.engine.core.Utils
 import org.joml.Matrix4f
 import org.joml.Vector2f
 import org.joml.Vector3f
+import org.lwjgl.opengl.GL11.GL_INVALID_VALUE
 import org.lwjgl.opengl.GL11.GL_TRUE
 import org.lwjgl.opengl.GL20.*
 import org.lwjgl.system.MemoryStack
@@ -53,7 +54,7 @@ class Shader {
     fun addUniform(location: String) {
         glGetUniformLocation(id, location).also {
             when (it) {
-                0xFFFFFFF -> throw Error("Can't find the uniform $location in the shader program.")
+                -1 -> throw Error("Can't find the uniform $location in the shader program.")
                 else -> uniforms[location] = it
             }
         }
