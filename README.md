@@ -20,13 +20,16 @@ Estimated for July 2018
 - [X] Window
 - [X] Input
 - [X] Textures with SBT
-- [X] Models (__dirty__)
-- [X] Light (__dirty__)
+- [X] **First** Models
+- [X] **First** Light
 - [X] Light Map (ambient, diffuse and specular)
 - [ ] Different type light : directional and point lights
-- [ ] Multiple light sources support (__dirty__)
+- [ ] **First** Multiple light sources support
 - [ ] Model loading with ASSIMP
-- [ ] Depth testing, Stencil testing, Blending and Face culling
+- [ ] Depth testing
+- [ ] Stencil testing
+- [ ] Blending
+- [ ] Face culling
 - [ ] Framebuffers
 - [ ] CubeMap
 - [ ] Geometry Shader
@@ -36,10 +39,11 @@ Estimated for July 2018
 - [ ] Shadows
 - [ ] Normal mapping
 - [ ] Parallax mapping
+
+### 1.1
+
 - [ ] HDR
 - [ ] Bloom
 - [ ] Deferred Shading
 - [ ] SSAO
 - [ ] PBR
-
-All __dirty__ tags has a better management later in the list.
