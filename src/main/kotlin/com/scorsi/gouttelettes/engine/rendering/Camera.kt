@@ -71,7 +71,7 @@ class Camera constructor(
             Vector2f().apply {
                 input.mousePosition.sub(input.mouseCenterPosition, this)
                 yaw += -x * mouseSensitivity
-                pitch += clamp(-89f, -y * mouseSensitivity, 89f)
+                pitch += clamp(-89f, y * mouseSensitivity, 89f)
             }
             updateVectors()
         }
