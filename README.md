@@ -32,7 +32,7 @@ Estimated for July 2018
 - [X] **First** Light
 - [X] Light Map (ambient, diffuse and specular)
 - [X] Different type light : directional and point lights
-- [ ] **First** Multiple light sources support
+- [X] **First** Multiple light sources support
 - [ ] Model loading with ASSIMP
 - [ ] Depth testing
 - [ ] Stencil testing
