@@ -13,8 +13,12 @@ We can see the source light reflection on the edge of the box.
 
 ## Roadmap
 
+### 1.0
+
+Estimated for July 2018
+
 - Lights sources (directional and point light)
-- Multiple light sources support (dirty)
+- Multiple light sources support
 - Model loading (ASSIMP)
 - Depth testing, Stencil testing, Blending and Face culling
 - Framebuffers
@@ -28,6 +32,6 @@ We can see the source light reflection on the edge of the box.
 - Parallax mapping
 - HDR
 - Bloom
-- Deferred Shading (Better multiple light sources support)
-- SSAO ?
-- PBR ?
+- Deferred Shading
+- SSAO
+- PBR
