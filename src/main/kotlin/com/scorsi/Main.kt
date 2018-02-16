@@ -104,7 +104,7 @@ fun main(vararg arg: String) {
 
         camera.handleInput(input, deltaTime)
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f)
+        glClearColor(0f, 0f, 0f, 0f)
         glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
 
         glBindVertexArray(vao)
