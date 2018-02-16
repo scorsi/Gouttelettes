@@ -21,18 +21,19 @@ We can see the source light reflection on the edge of the box.
     
 ## Roadmap
 
-### 1.0
+### 0.1
 
-Estimated for July 2018
+#### _Estimated for July 2018._
 
+3D:
 - [X] Window
 - [X] Input
 - [X] Textures with SBT
-- [X] **First** Models
-- [X] **First** Light
+- [X] *First* Models
+- [X] *First* Light
 - [X] Light Map (ambient, diffuse and specular)
 - [X] Different type light : directional and point lights
-- [X] **First** Multiple light sources support
+- [X] *First* Multiple light sources support
 - [ ] Model loading with ASSIMP
 - [ ] Depth testing
 - [ ] Stencil testing
@@ -47,11 +48,19 @@ Estimated for July 2018
 - [ ] Shadows
 - [ ] Normal mapping
 - [ ] Parallax mapping
-
-### 1.1
-
 - [ ] HDR
 - [ ] Bloom
 - [ ] Deferred Shading
 - [ ] SSAO
 - [ ] PBR
+
+UI:
+- [ ] UI with NanoVG
+
+Audio:
+- [ ] Audio Management
+- [ ] Audio loading with files
+
+Game engine:
+- [ ] Scene and Entity management
+- [ ] Store Scene and Entity in JSON files
