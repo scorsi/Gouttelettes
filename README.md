@@ -1,4 +1,4 @@
-# Gouttelettes Engine
+# Gouttelettes Engine (WIP)
 
 [![Travis Build Status](https://travis-ci.org/scorsi/Gouttelettes.svg?branch=master)](https://travis-ci.org/scorsi/Gouttelettes)
 
