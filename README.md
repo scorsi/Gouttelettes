@@ -23,8 +23,6 @@ We can see the source light reflection on the edge of the box.
 
 ### 0.1
 
-#### _Estimated for July 2018._
-
 3D:
 - [X] Window
 - [X] Input
